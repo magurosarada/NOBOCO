@@ -1,22 +1,25 @@
-import { Menu, Transition } from '@headlessui/react'
-import Link from 'next/link'
-import { FC, Fragment, useEffect, useRef, useState } from 'react'
-import LeaveModal from './LeaveModal'
-import PostModal from './PostModal'
+import { Menu, Transition } from "@headlessui/react";
+import Link from "next/link";
+import { Fragment, useState } from "react";
+import { useAuth } from "../context/UserContext";
+import LeaveModal from "./LeaveModal";
+import LogoutModal from "./LogoutModal";
+import PostModal from "./PostModal";
 
-let DropDown = () => { 
+let DropDown = () => {
+  let [isOpen, setIsOpen] = useState<boolean>(false);
+  let [isLogoutOpen, setIsLogoutOpen] = useState<boolean>(false);
 
-  let [isOpen, setIsopen] = useState<boolean>(false)
-  let [isLeaveOpen, setIsLeaveopen] = useState<boolean>(false)
-
+  const { user } = useAuth();
   return (
     <div>
-      <Menu as="div" className="relative inline-block text-right">
+      <Menu as="div" className="relative block text-right">
         <div>
-          <Menu.Button className="focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            <div className="items-center w-9 h-9">
-              <img src="" className="w-full h-full items-center rounded-full"/>
-            </div>
+          <Menu.Button className="focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 w-9 h-9">
+            <img
+              src={user?.userImage}
+              className="w-full h-full items-center rounded-full"
+            />
           </Menu.Button>
         </div>
         <Transition
@@ -32,63 +35,57 @@ let DropDown = () => {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <div>
-                    <button type="button"
+                  <div onClick={() => setIsOpen(true)}>
+                    <button
+                      type="button"
                       className={`${
-                        active ? 'bg-green-500 text-white' : 'text-gray-900'
+                        active ? "bg-green-500 text-white" : "text-gray-900"
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                      onClick={()=> setIsopen(true)}
-                    >投稿する
+                    >
+                      投稿する
                     </button>
                   </div>
                 )}
               </Menu.Item>
-              <Link href="/profile"><Menu.Item>
-                {({ active }) => (
-                  <button
-                    className= {`${
-                      active ? 'bg-green-500 text-white' : 'text-gray-900'
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    プロフィール
-                  </button>
-                )}
-              </Menu.Item></Link>
+            </div>
+            <div className="px-1 py-1 ">
+              <Link href="/profile">
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={`${
+                        active ? "bg-green-500 text-white" : "text-gray-900"
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      プロフィール
+                    </button>
+                  )}
+                </Menu.Item>
+              </Link>
             </div>
             <div className="px-1 py-1">
               <Menu.Item>
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? 'bg-green-500 text-white' : 'text-gray-900'
+                      active ? "bg-green-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     ナイスした投稿
                   </button>
                 )}
               </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? 'bg-green-500 text-white' : 'text-gray-900'
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    設定
-                  </button>
-                )}
-              </Menu.Item>
             </div>
             <div className="px-1 py-1">
               <Menu.Item>
                 {({ active }) => (
-                  <div onClick={() => setIsLeaveopen(true)}>
+                  <div onClick={() => setIsLogoutOpen(true)}>
                     <button
                       className={`${
-                        active ? 'bg-green-500 text-white' : 'text-gray-900'
+                        active ? "bg-green-500 text-white" : "text-gray-900"
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
-                      退会する
+                      ログアウト
                     </button>
                   </div>
                 )}
@@ -97,10 +94,15 @@ let DropDown = () => {
           </Menu.Items>
         </Transition>
       </Menu>
-      <PostModal isOpen={isOpen} onClose={()=> setIsopen(false)}/>
-      <LeaveModal isLeaveOpen={isLeaveOpen} onClose={() => setIsLeaveopen(false)}/>
+      <PostModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <LogoutModal
+        isLogoutOpen={isLogoutOpen}
+        onClose={() => {
+          setIsLogoutOpen(false);
+        }}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default DropDown 
+export default DropDown;

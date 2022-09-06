@@ -1,17 +1,22 @@
-import React from 'react'
-import MainLayout from '../components/MainLayout'
-import Post from '../components/Post'
+import { useRouter } from "next/router";
+import React, { ReactElement } from "react";
+import MainLayout from "../components/MainLayout";
+import Post from "../components/Post";
+import { useRequireAuth } from "../lib/requireAuth";
+import { NextPageWithLayout } from "./_app";
 
-const timeline = () => {
+const timeline: NextPageWithLayout = () => {
+  const { firebaseUser, user } = useRequireAuth();
+  const router = useRouter();
+  if (!firebaseUser) {
+    return null;
+  }
   return (
     <div>
-     <div className="bg-gray-100">
-        <MainLayout
-          userImageURL="https://pbs.twimg.com/profile_images/3406268893/54b7e1f981b7df7c817af48d1b96ad5e_400x400.jpeg">
-          <div className="mt-16">
-            <Post
+      <div className="bg-gray-100">
+        <div className="mt-16">
+          <Post
             id="xxx"
-            userImageURL="https://pbs.twimg.com/profile_images/3406268893/54b7e1f981b7df7c817af48d1b96ad5e_400x400.jpeg"
             userName="Hinata Kawaguchi"
             mainimageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAzZ7C_iutlGej5D2y5y7_8Z8OiD4BkUK1qg&usqp=CAU"
             mainText="xxx"
@@ -19,10 +24,9 @@ const timeline = () => {
             createdAt={Date.now()}
             likeCount={1}
             commentCount={1}
-            />
-            <Post 
+          />
+          <Post
             id="xxx"
-            userImageURL="https://pbs.twimg.com/profile_images/3406268893/54b7e1f981b7df7c817af48d1b96ad5e_400x400.jpeg"
             userName="Hinata Kawaguchi"
             userId="xxx"
             mainimageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAzZ7C_iutlGej5D2y5y7_8Z8OiD4BkUK1qg&usqp=CAU"
@@ -30,10 +34,9 @@ const timeline = () => {
             createdAt={Date.now()}
             likeCount={1}
             commentCount={1}
-            />
-            <Post 
+          />
+          <Post
             id="xxx"
-            userImageURL="https://pbs.twimg.com/profile_images/3406268893/54b7e1f981b7df7c817af48d1b96ad5e_400x400.jpeg"
             userName="Hinata Kawaguchi"
             userId="xxx"
             mainimageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKJ0ZeOOZbMbeZbrcQ3BaDZhuz-cYfvKkPBg&usqp=CAU"
@@ -41,10 +44,9 @@ const timeline = () => {
             createdAt={Date.now()}
             likeCount={1}
             commentCount={1}
-            />
-            <Post 
+          />
+          <Post
             id="xxx"
-            userImageURL="https://pbs.twimg.com/profile_images/3406268893/54b7e1f981b7df7c817af48d1b96ad5e_400x400.jpeg"
             userName="Hinata Kawaguchi"
             userId="xxx"
             mainimageURL=""
@@ -52,12 +54,13 @@ const timeline = () => {
             createdAt={Date.now()}
             likeCount={1}
             commentCount={1}
-            />
-          </div>
-        </MainLayout>
+          />
+        </div>
       </div>
     </div>
-  )
-}
-
-export default timeline
+  );
+};
+timeline.getLayout = function getLayout(page: ReactElement) {
+  return <MainLayout>{page}</MainLayout>;
+};
+export default timeline;

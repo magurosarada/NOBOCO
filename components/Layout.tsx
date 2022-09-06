@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
@@ -6,11 +7,19 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div>
       <header className="p-4 z-30 w-full fixed bg-green-100 top-0 md:space-x-2 h-16 border-[#F0F0F5] border-b">
         <div className="px-5 m-0 items-center flex justify-between min-w-full">
-          <div　className="inline-block w-25 h-8 items-center box-border">
-            <Link href="/"><img src="/logo.svg" alt="" className="w-full h-full"/></Link>
+          <div className="inline-block w-25 h-8  items-center box-border">
+            <Link href="/">
+              <a className="flex">
+                <Image src="/logo.svg" alt="NOBOCO" width="130" height="38" />
+              </a>
+            </Link>
           </div>
           <div className="items-center">
-          <Link href="/login"><button className=" p-2 border border-black items-center rounded-md shadow-sm text-sm font-medium hover:bg-green-300">ログイン</button></Link>
+            <Link href="/login">
+              <button className=" p-2 border border-black items-center rounded-md shadow-sm text-sm font-medium hover:bg-green-300">
+                ログイン
+              </button>
+            </Link>
           </div>
         </div>
       </header>

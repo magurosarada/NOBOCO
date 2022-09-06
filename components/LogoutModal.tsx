@@ -1,99 +1,30 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useEffect } from "react";
-import {
-  getAuth,
-  deleteUser,
-  reauthenticateWithCredential,
-  GoogleAuthProvider,
-  TwitterAuthProvider,
-  reauthenticateWithPopup,
-  signInWithCustomToken,
-  AuthErrorCodes,
-} from "firebase/auth";
-import useLineAuth, {
-  openLineLoginPage,
-  signinWithLine,
-} from "../lib/lineAuth";
 import { useRouter } from "next/router";
+import { Fragment, useState } from "react";
 import { auth } from "../firebase/client";
 
-const LeaveModal = ({
-  isLeaveOpen,
+const LogoutModal = ({
+  isLogoutOpen,
   onClose,
 }: {
-  isLeaveOpen: boolean;
+  isLogoutOpen: boolean;
   onClose: VoidFunction;
 }) => {
   const router = useRouter();
 
-  useEffect(() => {
-    const code = router.query.code;
-    const state = router.query.state;
-
-    if (!code || !state) {
-      return;
-    }
-
-    signinWithLine({
-      code: router.query.code as string,
-      state: router.query.state as string,
-    }).then(() => {
-      const user = auth.currentUser;
-      if (!user) {
-        return null;
-      }
-      deleteUser(user)
-        .then(() => {
-          // User deleted.
-          alert("delete action!");
-        })
-        .catch((error) => {
-          // An error ocurred
-          // ...
-        });
-    });
-  }, [router.query]);
-
-  const userDelete = () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (!user) {
-      return null;
-    }
-    let provider;
-
-    if (user.providerId.match(/google|twitter/)) {
-      const provider = {
-        google: new GoogleAuthProvider(),
-        twitter: new TwitterAuthProvider(),
-      };
-
-      reauthenticateWithPopup(
-        user,
-        provider[user.providerId as "google" | "twitter"]
-      )
-        .then(() => {
-          // User re-authenticated.
-          deleteUser(user)
-            .then(() => {
-              // User deleted.
-            })
-            .catch((error) => {
-              // An error ocurred
-              // ...
-            });
-        })
-        .catch((error) => {
-          // An error ocurred
-          // ...
-        });
-    } else {
-      openLineLoginPage(true);
-    }
+  const logout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        router.push("login");
+      })
+      .catch(() => {
+        alert("ログアウト失敗");
+      });
   };
   return (
     <>
-      <Transition appear show={isLeaveOpen} as={Fragment}>
+      <Transition appear show={isLogoutOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={onClose}>
           <Transition.Child
             as={Fragment}
@@ -126,9 +57,7 @@ const LeaveModal = ({
                     退会
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-md text-black">
-                      本当に退会してもよろしいですか？
-                    </p>
+                    <p className="text-md text-black">ログアウトしますか？</p>
                   </div>
 
                   <div className="mt-4 flex">
@@ -141,10 +70,10 @@ const LeaveModal = ({
                     </button>
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent ml-4 bg-green-100 px-4 py-2 text-sm font-medium text-black hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={() => userDelete()}
+                      className="inline-flex justify-center rounded-md border border-transparent ml-4 bg-green-100 px-4 py-2 text-sm font-medium text-black hover:bg-green-200  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={() => logout()}
                     >
-                      退会する
+                      ログアウト
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -157,4 +86,4 @@ const LeaveModal = ({
   );
 };
 
-export default LeaveModal;
+export default LogoutModal;
