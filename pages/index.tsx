@@ -1,9 +1,9 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Link from "next/link";
+import React, { ReactElement } from "react";
+import Layout from "../components/Layout";
+import { NextPageWithLayout } from "./_app";
 
-const Home: NextPage = () => {
+const index: NextPageWithLayout = () => {
   return (
     <div>
       <div className="mt-16 py-64 bg-[url('/top.jpg')] object-cover bg-cover w-full h-full text-center">
