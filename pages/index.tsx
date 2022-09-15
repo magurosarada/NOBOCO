@@ -1,9 +1,9 @@
-import Link from "next/link";
-import React, { ReactElement } from "react";
-import Layout from "../components/Layout";
-import { NextPageWithLayout } from "./_app";
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
 
-const index: NextPageWithLayout = () => {
+const Home: NextPage = () => {
   return (
     <div>
       <div className="mt-16 py-64 bg-[url('/top.jpg')] object-cover bg-cover w-full h-full text-center">
@@ -140,4 +140,8 @@ index.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
+<<<<<<< HEAD
 export default index;
+=======
+export default index
+>>>>>>> 9afa34b823ed5a37172acfeddce51a7c2c927278
