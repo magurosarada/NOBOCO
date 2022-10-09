@@ -22,9 +22,6 @@ const SearchBar = () => {
     console.log("検索");
     hook(query);
   };
-  let toggleSaerchBar = () => {
-    setIsOpen((oldValue) => !oldValue);
-  };
 
   return (
     <div className="">
@@ -34,23 +31,35 @@ const SearchBar = () => {
           isOpen || isMobile ? "w-full justify-items-end md:justify-center" : ""
         )}
       >
-        <div className="flex">
+        <div className="flex ">
           <InstantSearch indexName="posts" searchClient={searchClient}>
             <SearchBox
               classNames={{
                 submitIcon: "hidden",
                 resetIcon: "hidden",
-                input: "rounded-full p-2 border-slate-300 pr-10",
+                input:
+                  "pl-2 py-1  pr-10 border-slate-300 border focus-within:border-black rounded-md hover:border-black outline-0",
                 root: "relative inline-block",
               }}
               submitIconComponent={() => (
-                <div>
-                  <img
-                    src="/search.svg"
-                    alt=""
-                    className="absolute right-0 top-1/2 -translate-y-1/2 w-10"
-                  />
-                </div>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    color="#a8abb1"
+                    stroke="currentColor"
+                    tabIndex={-1}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 mr-2 p-0.5  w-6 h-6 hover:stroke-black"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                    />
+                  </svg>
+                </button>
               )}
               queryHook={debounce(search, 1000)}
             />

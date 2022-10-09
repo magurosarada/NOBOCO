@@ -8,8 +8,7 @@ const ProfileEdit: NextPageWithLayout = () => {
   const router = useRouter();
 
   return (
-    <div>
-      <button onClick={() => router.back()}>Back</button>
+    <div className="py-10">
       <ProfileForm isEditMode />
     </div>
   );

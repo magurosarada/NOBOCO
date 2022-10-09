@@ -3,7 +3,11 @@ import classNames from "classnames";
 import { ChangeEvent, Fragment, useCallback, useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 import { useDropzone } from "react-dropzone";
-import { useController, UseControllerProps } from "react-hook-form";
+import {
+  FieldValues,
+  useController,
+  UseControllerProps,
+} from "react-hook-form";
 
 const ImageEditor = <T,>({ control, name }: UseControllerProps<T>) => {
   const [isImageOpen, setIsImageOpen] = useState<boolean>(false);
@@ -47,12 +51,11 @@ const ImageEditor = <T,>({ control, name }: UseControllerProps<T>) => {
   return (
     <>
       <div className="flex">
-        <div className="mt-6">
-          <h3 className="font-semibold">プロフィール画像</h3>
+        <div className="">
           <label
             htmlFor="userImage"
             {...getRootProps()}
-            className={classNames("border", isDragAccept && "bg-green-200")}
+            className={classNames("", isDragAccept && "bg-green-200")}
           >
             <input
               {...getInputProps()}
@@ -61,7 +64,7 @@ const ImageEditor = <T,>({ control, name }: UseControllerProps<T>) => {
               id="userImage"
             />
             {field.value ? (
-              <div className="w-30 h-30 mt-2">
+              <div className="w-30 h-30">
                 <img
                   src={field.value as string}
                   className="w-full h-full rounded-full"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { FC } from "react";
 import { useAuth } from "../context/UserContext";
+import Button from "./Button";
 
 type Props = {
   postCount: number;
@@ -15,41 +16,50 @@ let ProfileAbout: FC<Props> = ({ postCount, followCount, followerCount }) => {
   }
   return (
     <div>
-      <div className="mt-16 mx-auto border-b p-4 md:p-4 bg-white max-w-4xl border-x border-gray-200">
-        <div className="flex  md:mx-auto md:center">
-          <div className="w-20 h-20 md:w-40 md:h-40 md:mx-auto ">
-            <img src={user.userImage} alt="" className="rounded-full w-full" />
+      <div className="mx-auto border-b rounded-md bg-white max-w-4xl border-x border-gray-200">
+        <img src="/top.jpg" className="w-full max-h-60 object-cover " />
+        <div className="px-4">
+          <div className="flex  mt-5 items-center ">
+            <div className="w-20 h-20 ">
+              <img
+                src={user.userImage}
+                alt=""
+                className="rounded-full w-full"
+              />
+            </div>
+            <div className="ml-5">
+              <h2 className="font-bold text-xl">{user.name}</h2>
+              <h3 className=" text-left text-slate-500">{user.handleName}</h3>
+            </div>
+            <div className="ml-auto mt-auto">
+              <Button
+                href="profile/edit"
+                className="hover:bg-green-500 hover:text-white"
+              >
+                プロフィールの編集
+              </Button>
+            </div>
           </div>
-          <div className="mx-auto md:mt-5">
-            <h2 className="text-2xl text-center">{user.name}</h2>
-            <button className="mt-4 md:mt-10 border border-black p-1 px-5 text-center rounded-md font-bold">
-              <Link href="/profile/edit">
-                <a className="mx-auto text-center">プロフィールの編集</a>
-              </Link>
-            </button>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="mt-4">
-            <h3 className="font-semibold text-left">{user.handleName}</h3>
+
+          <div className="flex flex-col mb-3">
             <p className="mt-3">{user.introduction}</p>
-          </div>
-          <div className="flex  mt-4">
-            <Link href="">
-              <a className="">
-                <span>{followCount}</span>フォロー
-              </a>
-            </Link>
-            <Link href="">
-              <a className="ml-4">
-                <span>{followerCount}</span>フォロワー
-              </a>
-            </Link>
-            <Link href="">
-              <a className="ml-4">
-                <span>{postCount}</span>投稿
-              </a>
-            </Link>
+            <div className="flex  mt-4">
+              <Link href="">
+                <a className="">
+                  <span>{followCount}</span>フォロー
+                </a>
+              </Link>
+              <Link href="">
+                <a className="ml-4">
+                  <span>{followerCount}</span>フォロワー
+                </a>
+              </Link>
+              <Link href="">
+                <a className="ml-4">
+                  <span>{postCount}</span>投稿
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

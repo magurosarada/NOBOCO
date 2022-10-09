@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/UserContext";
 import { db, storage } from "../firebase/client";
 import { User } from "../types/user";
+import Button from "./Button";
 import ImageEditor from "./ImageEditor";
 import LeaveModal from "./LeaveModal";
 
@@ -28,7 +29,7 @@ const ProfileForm = ({ isEditMode }: { isEditMode: boolean }) => {
     if (isEditMode && user) {
       reset(user);
     }
-  }, [user, reset]);
+  }, [user]);
 
   const router = useRouter();
 
@@ -66,7 +67,7 @@ const ProfileForm = ({ isEditMode }: { isEditMode: boolean }) => {
     });
   };
   return (
-    <div className=" py-4 mx-auto container mt-6">
+    <div className=" py-4 mx-auto container mt-6 px-15 max-w-xl">
       <h2 className="text-2xl font-semibold">
         ユーザー情報{isEditMode ? "編集" : "入力"}
       </h2>
@@ -74,113 +75,123 @@ const ProfileForm = ({ isEditMode }: { isEditMode: boolean }) => {
         onSubmit={handleSubmit(submit, () => {
           console.log("失敗");
         })}
+        className="mt-5"
       >
-        <ImageEditor name="userImage" control={control} />
-        <div className="mt-6">
-          <label className="font-semibold block" htmlFor="name">
-            <h3>ユーザーネーム*</h3>
-            <input
-              id="name"
-              type="text"
-              autoComplete="name"
-              defaultValue={firebaseUser.displayName || ""}
-              {...register("name", {
-                required: "必須項目です",
-                maxLength: {
-                  value: 50,
-                  message: "最大50文字です",
-                },
-              })}
-              className="border w-full h-9 mt-2 rounded-md p-2"
-            />
-          </label>
-          {errors.name && (
-            <p className="text-red-500 text-sm">{errors.name?.message}</p>
-          )}
-        </div>
-        <div className="mt-6">
-          <label className="font-semibold block" htmlFor="handleName">
-            ユーザーID*
-          </label>
-          <p>半角英数字のみです</p>
-          <input
-            type="text"
-            id="handleName"
-            autoComplete="off"
-            {...register("handleName", {
-              required: "必須項目です",
-              pattern: {
-                value: /^[a-zA-Z]+$|\D|/,
-                message: "半角英数字のみです",
-              },
-              maxLength: {
-                value: 50,
-                message: "最大50文字です",
-              },
-            })}
-            className="border w-full h-9 mt-2 rounded-md p-2"
-          />
-          {errors.handleName && (
-            <p className="text-red-500 text-sm">{errors.handleName.message}</p>
-          )}
-        </div>
-        <div className="mt-6">
-          <label className="font-semibold block" htmlFor="introduction">
-            自己紹介文*
-          </label>
-          <textarea
-            id="introduction"
-            placeholder=""
-            autoComplete="off"
-            {...register("introduction", {
-              required: "必須項目です",
-              maxLength: {
-                value: 400,
-                message: "最大400文字です",
-              },
-            })}
-            className="border w-full h-24 mt-2 rounded-md p-2"
-          ></textarea>
-          {errors.introduction && (
-            <p className="text-red-500 text-sm">
-              {errors.introduction?.message}
-            </p>
-          )}
-        </div>
-        <div className="mt-6">
-          <label className="font-semibold block" htmlFor="mail">
-            メールアドレス
-          </label>
-          <input
-            id="mail"
-            type="email"
-            autoComplete="email"
-            placeholder=""
-            defaultValue={firebaseUser.email || ""}
-            {...register("email")}
-            className="border w-full h-9 mt-2 rounded-md p-2"
-          />
-        </div>
-        <div className="text-center mt-6">
-          <button
-            type="submit"
-            className=" border rounded-md mx-auto p-2 hover:bg-green-200"
-            disabled={isSubmitting}
-          >
-            {isEditMode ? "更新" : "登録"}する
-          </button>
+        <div className="flex justify-center">
+          <div className="mr-6">
+            <label htmlFor="">
+              <ImageEditor name="userImage" control={control} />
+              <p className="text-center text-[#93a5b1] mt-2">変更する</p>
+            </label>
+          </div>
+          <div className="w-full ">
+            <div className="">
+              <label className=" block" htmlFor="name">
+                <h3 className=" text-sm">
+                  ユーザーネーム<span className="text-red-500">*</span>
+                </h3>
+                <input
+                  id="name"
+                  type="text"
+                  autoComplete="name"
+                  defaultValue={firebaseUser.displayName || ""}
+                  {...register("name", {
+                    required: "必須項目です",
+                    maxLength: {
+                      value: 50,
+                      message: "最大50文字です",
+                    },
+                  })}
+                  className="border w-full h-9 mt-2 rounded-md px-[10.5px] py-[9px] bg-[#f1f5f9]"
+                />
+              </label>
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name?.message}</p>
+              )}
+            </div>
+            <div className="mt-6">
+              <label className=" block" htmlFor="handleName">
+                ユーザーID<span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="handleName"
+                autoComplete="off"
+                {...register("handleName", {
+                  required: "必須項目です",
+                  pattern: {
+                    value: /^[a-zA-Z]+$|\D|/,
+                    message: "半角英数字のみです",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "最大50文字です",
+                  },
+                })}
+                className="border w-full h-9 mt-2 rounded-md  px-[10.5px] py-[9px] bg-[#f1f5f9]"
+              />
+              {errors.handleName && (
+                <p className="text-red-500 text-sm">
+                  {errors.handleName.message}
+                </p>
+              )}
+              <p className="text-right">半角英数字のみ</p>
+            </div>
+            <div className="mt-6">
+              <label className="block" htmlFor="introduction">
+                自己紹介文<span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="introduction"
+                placeholder=""
+                autoComplete="off"
+                {...register("introduction", {
+                  required: "必須項目です",
+                  maxLength: {
+                    value: 400,
+                    message: "最大400文字です",
+                  },
+                })}
+                className="border w-full h-24 mt-2 rounded-md p-2  bg-[#f1f5f9]"
+              ></textarea>
+              {errors.introduction && (
+                <p className="text-red-500 text-sm">
+                  {errors.introduction?.message}
+                </p>
+              )}
+            </div>
+            <div className="mt-6">
+              <label className=" block" htmlFor="mail">
+                メールアドレス
+              </label>
+              <input
+                id="mail"
+                type="email"
+                autoComplete="email"
+                placeholder=""
+                defaultValue={firebaseUser.email || ""}
+                {...register("email")}
+                className="border w-full h-9 mt-2 rounded-md  px-[10.5px] py-[9px]  bg-[#f1f5f9]"
+              />
+            </div>
+            <div className="mt-6 mr-auto">
+              <Button type="submit" disabled={isSubmitting} className="ml-auto">
+                {isEditMode ? "更新" : "登録"}する
+              </Button>
+            </div>
+          </div>
         </div>
       </form>
-      <div className="mt-10">
+      <div className="mt-8  flex flex-col">
         <h3 className="text-2xl">退会</h3>
-        <p className="mt-4">退会すると投稿などの全てのデータが削除されます</p>
-        <div className="text-center">
-          <button
-            className=" border text-white rounded-md p-2 bg-red-500 border-gray-100 mt-4"
+        <p className="mt-4 ">退会すると投稿などの全てのデータが削除されます</p>
+        <div className="flex ">
+          <Button
+            className="  rounded-md p-2  bg-red-100  mt-4 hover:bg-red-500 hover:text-white hover:border-none"
             onClick={() => setIsLeaveopen(true)}
           >
             退会する
-          </button>
+          </Button>
         </div>
         <LeaveModal
           isLeaveOpen={isLeaveOpen}

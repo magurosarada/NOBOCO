@@ -121,7 +121,7 @@ export const openLineLoginPage = async (isDleteMode: boolean) => {
     client_id: process.env.NEXT_PUBLIC_LINE_CLIENT_ID as string,
     redirect_uri: isDleteMode
       ? `http://localhost:3000/settings`
-      : `http://localhost:3000/login`,
+      : `http://localhost:3000/timeline`,
     state,
     scope: "profile openid",
   }).toString();

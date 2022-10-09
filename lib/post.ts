@@ -11,11 +11,13 @@ export const createPost = (data: Post) => {
   }
   const post: Post = {
     id: ref.id,
+    title: data.title,
     body: data.body,
     createdAt: Date.now(),
     updatedAt: null,
     authorId: firebaseUser.uid,
     mainImageURL: "",
+    place: data.place
   };
 
   return setDoc(ref, post).then(() => {

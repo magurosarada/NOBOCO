@@ -8,6 +8,8 @@ import { useAuth } from "../context/UserContext";
 import { Post } from "../types/post";
 import { collection, doc, setDoc } from "@firebase/firestore";
 import { db } from "../firebase/client";
+import { kMaxLength } from "buffer";
+import Button from "./Button";
 
 const PostModal = ({
   isOpen,
@@ -47,6 +49,7 @@ const PostModal = ({
     const post: Post = {
       id: ref.id,
       body: data.body,
+      title: data.title,
       createdAt: Date.now(),
       updatedAt: null,
       authorId: firebaseUser.uid,
@@ -85,38 +88,29 @@ const PostModal = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md md:max-w-3xl transform h-96 p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md md:max-w-3xl  transform h-96 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="mx-auto container fixed bg-white left-0 top-0 rounded-2xl">
                     <form action="" onSubmit={handleSubmit(submit)}>
-                      <div className="flex justify-between items-center border-b p-3">
+                      <div className="flex  items-center border-b text-center p-3">
                         <button onClick={onClose}>
                           <img src="/close.svg" alt="" />
                         </button>
                         <Dialog.Title
                           as="h2"
-                          className="font-semibold ml-10 md:ml-14 text-xl"
+                          className="font-semibold text-center flex-1 text-xl"
                         >
                           新規投稿
                         </Dialog.Title>
-                        <div className="">
-                          <button
-                            type="submit"
-                            className="rounded-full border p-2 hover:bg-green-200"
-                            onClick={() => onclose}
-                          >
-                            投稿する
-                          </button>
-                        </div>
                       </div>
-                      <div className="flex border-t md:flex-row flex-col h-96">
+                      <div className=" border-t flex-col mx-auto">
                         <div
                           className={classNames(
-                            "md:w-1/2 w-full text-center",
+                            " w-full text-center",
                             isDragAccept && "bg-green-200"
                           )}
                         >
                           <label
-                            className="md:w-1/2 w-full p-10 text-center"
+                            className="w-full p-10 text-center"
                             {...getRootProps()}
                           >
                             <input
@@ -132,7 +126,7 @@ const PostModal = ({
                                 className="m-auto mt-10"
                               />
                             ) : (
-                              <div className="w-full h-full p-20">
+                              <div className="w-full h-full p-10">
                                 <p className="text-center">画像や動画を挿入</p>
                                 <img
                                   src="/add.svg"
@@ -146,21 +140,24 @@ const PostModal = ({
                         {selectedImage && (
                           <ImageEditor name="mainImageURL" control={control} />
                         )}
-                        <div className="md:w-1/2 w-full border-l-2">
-                          <div className="flex py-3 items-center pl-3  border-b">
-                            <div className="w-10 h-10">
-                              <img
-                                src={user.userImage}
-                                alt=""
-                                className="w-full h-full rounded-full"
-                              />
-                            </div>
-                            <h3 className="font-semibold ml-4">{user.name}</h3>
-                          </div>
+                        <div className=" w-full border-t ">
+                          <input
+                            className="w-full"
+                            type="text"
+                            id="title"
+                            placeholder="タイトルを入力"
+                            {...register("title", {
+                              required: "必須入力です",
+                              maxLength: {
+                                value: 50,
+                                message: "最大50文字までです",
+                              },
+                            })}
+                          />
                           <textarea
                             id="body"
                             placeholder="本文を入力"
-                            className="w-full h-72"
+                            className="w-full h-40"
                             {...register("body", {
                               required: "必須入力です",
                               maxLength: {
@@ -174,6 +171,15 @@ const PostModal = ({
                               {errors.body.message}
                             </p>
                           )}
+                        </div>
+                        <div className="text-right mb-3">
+                          <Button
+                            type="submit"
+                            className=" border p-2 ml-auto hover:bg-green-200"
+                            onClick={() => onclose}
+                          >
+                            投稿する
+                          </Button>
                         </div>
                       </div>
                     </form>

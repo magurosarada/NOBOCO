@@ -140,8 +140,4 @@ index.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-<<<<<<< HEAD
 export default index;
-=======
-export default index
->>>>>>> 9afa34b823ed5a37172acfeddce51a7c2c927278

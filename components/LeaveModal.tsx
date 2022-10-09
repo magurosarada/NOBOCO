@@ -16,6 +16,7 @@ import useLineAuth, {
 } from "../lib/lineAuth";
 import { useRouter } from "next/router";
 import { auth } from "../firebase/client";
+import Button from "./Button";
 
 const LeaveModal = ({
   isLeaveOpen,
@@ -121,7 +122,7 @@ const LeaveModal = ({
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-xl font-midium text-gray-900"
                   >
                     退会
                   </Dialog.Title>
@@ -132,20 +133,20 @@ const LeaveModal = ({
                   </div>
 
                   <div className="mt-4 flex">
-                    <button
+                    <Button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-black hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-black hover:bg-gray-500 hover:border-none hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={onClose}
                     >
                       キャンセル
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent ml-4 bg-green-100 px-4 py-2 text-sm font-medium text-black hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent ml-4 bg-red-100 px-4 py-2 text-sm font-medium text-black hover:bg-red-500 hover:border-none hover:text-white hover:border-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={() => userDelete()}
                     >
                       退会する
-                    </button>
+                    </Button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
