@@ -4,12 +4,12 @@ import { AuthProvider } from "../context/UserContext";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 
-export type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<T = {}> = NextPage<T> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
+type AppPropsWithLayout<T = {}> = AppProps & {
+  Component: NextPageWithLayout<T>;
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

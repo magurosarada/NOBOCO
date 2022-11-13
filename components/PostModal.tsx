@@ -49,6 +49,7 @@ const PostModal = ({
     const post: Post = {
       id: ref.id,
       body: data.body,
+      place: "",
       title: data.title,
       createdAt: Date.now(),
       updatedAt: null,

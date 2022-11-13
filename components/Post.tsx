@@ -37,13 +37,15 @@ let Post: FC<Props> = ({
     <div>
       <div className=" rounded-md bg-white w-full border shadow-sm border-gray-200">
         <div className="">
-          <div className="w-full">
-            <img
-              src={mainimageURL}
-              alt=""
-              className="w-full h-hull  rounded-md rounded-b-none drop-shadow-md"
-            />
-          </div>
+          {mainimageURL && (
+            <div className="w-full">
+              <img
+                src={mainimageURL}
+                alt=""
+                className="w-full h-hull rounded-md aspect-video rounded-b-none drop-shadow-md"
+              />
+            </div>
+          )}
           <div className="px-6 mt-7">
             <div className="mb-10">
               <h3 className=" text-white text-sm bg-green-500 py-1 px-2 rounded-full inline-block">

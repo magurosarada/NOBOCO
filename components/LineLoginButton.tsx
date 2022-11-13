@@ -3,8 +3,10 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuth } from "../context/UserContext";
+import { FaLine } from "react-icons/fa";
 import { auth, db } from "../firebase/client";
 import useLineAuth, { openLineLoginPage } from "../lib/lineAuth";
+import Button from "./Button";
 
 const AuthLine = () => {
   const router = useRouter();
@@ -13,13 +15,15 @@ const AuthLine = () => {
   useLineAuth(false);
 
   return (
-    <div className="flex justify-center">
-      <button
-        className="border-2 h-12 mt-5 rounded-full w-full md:w-3/5 mx-auto bg-white border-black border-solid hover:bg-[#06c755]"
+    <div className="">
+      <Button
+        Icon={FaLine}
+        color={"#fff"}
+        className=" h-12 mt-5 rounded-full w-4/6 mx-auto px-[13px] border-none text-white  flex justify-center  items-center hover:text-white   bg-[#06c755] :"
         onClick={() => openLineLoginPage}
       >
-        LINEアカウントでログイン
-      </button>
+        <span>LINEアカウントでログイン</span>
+      </Button>
     </div>
   );
 };

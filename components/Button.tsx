@@ -18,7 +18,7 @@ const Button: FC<
   }
 > = ({ children, className, Icon, ...props }) => {
   const buttonClass = classNames(
-    "px-1 py-1 min-w-max w-24 rounded-md bg-white hover:text-green-500 border space-x-1 flex items-center  disabled:hover:text-gray-200 shadow disabled:cursor-not-allowed transition-colors cursor-disabled disabled:opacity-30 pointer-none disabled:hover:bg-gray-700  hover:border-green-500",
+    "px-1 py-1 min-w-max w-24 rounded-md justify-center bg-white border space-x-1 flex items-center  disabled:hover:text-gray-200 shadow disabled:cursor-not-allowed transition-colors cursor-disabled disabled:opacity-30 pointer-none disabled:hover:bg-gray-700 ",
     className
   );
 
@@ -29,7 +29,7 @@ const Button: FC<
       <Link href={href!}>
         <a className={buttonClass} {...linkProps}>
           {Icon && <Icon />}
-          <span className="flex-1">{children}</span>
+          <span className="">{children}</span>
         </a>
       </Link>
     );
@@ -40,8 +40,8 @@ const Button: FC<
       className={buttonClass}
       {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
     >
-      {Icon && <Icon />}
-      <span className="flex-1">{children}</span>
+      {Icon && <Icon size={20} />}
+      <span className="">{children}</span>
     </button>
   );
 };

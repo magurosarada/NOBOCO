@@ -1,10 +1,6 @@
-import { doc, getDoc } from "@firebase/firestore";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
 import MainLayout from "../../components/MainLayout";
-import { useAuth } from "../../context/UserContext";
-import { db } from "../../firebase/client";
 import { Post } from "../../types/post";
 import { useUser } from "../../lib/user";
 import { NextPageWithLayout } from "../_app";
@@ -12,6 +8,7 @@ import format from "date-fns/format";
 import Addcomment from "../../components/Addcomment";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { adminDB } from "../../firebase/server";
+
 export const getStaticProps: GetStaticProps<{
   post: Post;
 }> = async (context) => {
@@ -19,6 +16,7 @@ export const getStaticProps: GetStaticProps<{
   const post = snap.data() as Post;
 
   return {
+    revalidate: 60,
     props: {
       post,
     },
@@ -26,16 +24,18 @@ export const getStaticProps: GetStaticProps<{
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return { paths: [], fallback: "blocking" };
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
 };
 
-const postDetail: NextPageWithLayout = ({
-  post,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const postDetail: NextPageWithLayout<
+  InferGetStaticPropsType<typeof getStaticProps>
+> = ({ post }) => {
   const user = useUser(post?.authorId);
-
   if (!post) {
-    return <p>記事が存在しませんyy</p>;
+    return <p>記事が存在しません</p>;
   }
   return (
     <div className="container mx-auto border-x mt-20">
@@ -45,7 +45,7 @@ const postDetail: NextPageWithLayout = ({
       </div>
       {user && (
         <div className="">
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4 px-4">
             <img
               src={user?.userImage}
               alt=""
@@ -53,7 +53,7 @@ const postDetail: NextPageWithLayout = ({
             />
             <h3 className="text-xl ml-3">{user?.handleName}</h3>
           </div>
-          <div className="aspect-video rounded-md bg-slate-50 mx-4"></div>
+          <div className="aspect-video max-h-15 rounded-md bg-slate-50"></div>
           <div>
             <p className="text-2xl mt-4">{post?.body}</p>
           </div>

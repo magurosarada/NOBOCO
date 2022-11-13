@@ -9,7 +9,9 @@ import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/UserContext";
 import { NextPageWithLayout } from "./_app";
+import { FaGoogle, FaTwitter } from "react-icons/fa";
 import { ReactElement } from "react";
+import Button from "../components/Button";
 
 const login: NextPageWithLayout = () => {
   const router = useRouter();
@@ -35,25 +37,23 @@ const login: NextPageWithLayout = () => {
   return (
     <div className="mt-16 bg-[url('/signup.jpg')] bg-cover object-fill py-32">
       <div className="mx-auto">
-        <div className=" py-10 flex flex-col justify-center bg-white md:w-3/5 mx-auto md:rounded-full">
+        <div className=" py-10 flex flex-col justify-center  md:w-3/5 mx-auto md:rounded-full">
           <img src="/logo.svg" alt="" className="mx-auto md:w-1/3" />
           <div className="mt-5 flex flex-col justify-center">
-            <div className="flex justify-center">
-              <button
-                className="border-2 h-12 rounded-full w-full md:w-3/5 bg-white border-black border-solid hover:bg-gray-100"
-                onClick={() => loginWithProvider("google")}
-              >
-                Googleアカウントでログイン
-              </button>
-            </div>
-            <div className="flex justify-center">
-              <button
-                className="border-2 h-12 mt-5 rounded-full w-full md:w-3/5 mx-auto bg-white border-black border-solid hover:bg-[#1DA1F2]"
-                onClick={() => loginWithProvider("twitter")}
-              >
-                Twitterアカウントでログイン
-              </button>
-            </div>
+            <Button
+              Icon={FaGoogle}
+              className="h-12 rounded-full w-4/6 mx-auto text-white border-none items-center  bg-[#dc4e40] "
+              onClick={() => loginWithProvider("google")}
+            >
+              Googleアカウントでログイン
+            </Button>
+            <Button
+              Icon={FaTwitter}
+              className=" h-12 mt-5 rounded-full   w-4/6 mx-auto text-white border-none  bg-[#1DA1F2]"
+              onClick={() => loginWithProvider("twitter")}
+            >
+              Twitterアカウントでログイン
+            </Button>
             <AuthLine />
           </div>
         </div>

@@ -3,7 +3,7 @@ import RankingContent from "./RankingContent";
 
 const UserRanking = () => {
   return (
-    <div className="bg-white rounded-md h-full max-w-[248px] p-3">
+    <div className="bg-white rounded-md h-full w-full p-3">
       <div className="flex justify-between">
         <h3 className=" text-base leading-normal">いいねランキング</h3>
         <div className="flex">

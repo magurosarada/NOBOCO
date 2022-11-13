@@ -8,6 +8,7 @@ import {
   SearchBoxProps,
 } from "react-instantsearch-hooks-web";
 import { debounce } from "debounce";
+import Router, { useRouter } from "next/router";
 
 const searchClient = algoliasearch(
   "XIIP7PXG27",
