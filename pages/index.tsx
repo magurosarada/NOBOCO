@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { ReactElement } from "react";
+import Button from "../components/Button";
 import Layout from "../components/Layout";
 import { NextPageWithLayout } from "./_app";
 
@@ -121,15 +122,15 @@ const index: NextPageWithLayout = () => {
             </div>
           </div>
           <div className="my-12 flex justify-center text-center">
-            <Link href="/login">
-              <button
-                className="bg-green-600 whitespace-nowrap px-12 py-4 border-2 border-green-600
-                                rounded-full shadow-sm text-base font-medium text-white hover:bg-green-50
-                                hover:text-green-500 focus:outline-none focus:ring-2"
-              >
-                登録する
-              </button>
-            </Link>
+            <div>
+              <h3>まずは無料で登録</h3>
+              <Link href="/login">
+                <Button>登録する</Button>
+              </Link>
+            </div>
+            <div>
+              <img src="" alt="" />
+            </div>
           </div>
         </div>
       </div>
