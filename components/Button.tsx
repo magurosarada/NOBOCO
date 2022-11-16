@@ -18,7 +18,7 @@ const Button: FC<
   }
 > = ({ children, className, Icon, ...props }) => {
   const buttonClass = classNames(
-    "px-1 py-1 min-w-max w-24 rounded-md justify-center bg-white border space-x-1 flex items-center  disabled:hover:text-gray-200 shadow disabled:cursor-not-allowed transition-colors cursor-disabled disabled:opacity-30 pointer-none disabled:hover:bg-gray-700 ",
+    "px-1 py-1 min-w-max w-24 rounded-md  bg-white border space-x-1 items-center  disabled:hover:text-gray-200 shadow disabled:cursor-not-allowed transition-colors cursor-disabled disabled:opacity-30 pointer-none disabled:hover:bg-gray-700 ",
     className
   );
 
