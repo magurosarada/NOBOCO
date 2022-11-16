@@ -19,7 +19,7 @@ const privacypolicy: NextPageWithLayout = () => {
       <div className="container mx-auto pt-20 px-4 w-screen">
         <h1 className="text-2xl font-bold">プライバシーポリシー</h1>
         <p className="py-8">
-          本サービスは，本ウェブサイト上で提供するサービス「NOBOCO」（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
+          本サービスは、本ウェブサイト上で提供するサービス「NOBOCO」（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。
         </p>
 
         {items.map((item, index) => (

@@ -18,7 +18,7 @@ const Header = () => {
         <div className="flex gap-4 items-center">
           <Link href="searchResult">
             <a href="">
-              <button className="items-center">
+              <button className="w-6 h-6 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -64,7 +64,7 @@ const Header = () => {
             </a>
           </Link>
           <a href="">
-            <button className="w-6 h-6">
+            <button className="w-6 h-6 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

@@ -19,7 +19,7 @@ const AuthLine = () => {
       <Button
         Icon={FaLine}
         color={"#fff"}
-        className=" h-12 mt-5 rounded-full w-4/6 mx-auto px-[15px] border-none text-white  flex justify-center  items-center hover:text-white   bg-[#06c755] :"
+        className=" h-12 mt-5 rounded-full w-4/6 mx-auto px-[48px] border-none text-white  flex justify-center  items-center hover:text-white   bg-[#06c755] :"
         onClick={() => openLineLoginPage(false)}
       >
         <span>LINEアカウントでログイン</span>
