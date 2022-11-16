@@ -13,7 +13,7 @@ const RecommendUser = ({ name, image }: { name: string; image: string }) => {
         </div>
         <div className="flex justify-between">
           <div className="items-center">
-            <Button className="max-w-4 h-6 ml-3 w-3 hover:bg-green-500 hover:text-white flex shadow-none">
+            <Button className="max-w-4 h-7 ml-3 w-3 hover:bg-green-500 hover:text-white flex shadow-none">
               フォロー
             </Button>
           </div>
