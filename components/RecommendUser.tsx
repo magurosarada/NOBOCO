@@ -4,7 +4,7 @@ import Button from "./Button";
 const RecommendUser = ({ name, image }: { name: string; image: string }) => {
   return (
     <div>
-      <div className="flex justify-between items-center  px-4 py-1 ">
+      <div className="flex justify-between items-center max-w-full px-4 py-1 ">
         <div className="flex items-center">
           <div className="">
             <img src={image} alt="" className="rounded-full w-8 h-8 mr-2" />
