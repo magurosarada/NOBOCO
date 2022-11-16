@@ -42,14 +42,14 @@ const login: NextPageWithLayout = () => {
           <div className="mt-5 flex flex-col justify-center">
             <Button
               Icon={FaGoogle}
-              className="h-12 rounded-full w-4/6 mx-auto text-white px-10 py-1 flex border-none items-center  bg-[#dc4e40] "
+              className="h-12 rounded-full w-4/6 mx-auto text-white px-11 py-1 flex border-none items-center  bg-[#dc4e40] "
               onClick={() => loginWithProvider("google")}
             >
               Googleアカウントでログイン
             </Button>
             <Button
               Icon={FaTwitter}
-              className=" h-12 mt-5 rounded-full   w-4/6 mx-auto px-10 py-1 flex text-white border-none  bg-[#1DA1F2]"
+              className=" h-12 mt-5 rounded-full   w-4/6 mx-auto px-11 py-1 flex text-white border-none  bg-[#1DA1F2]"
               onClick={() => loginWithProvider("twitter")}
             >
               Twitterアカウントでログイン
