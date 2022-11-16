@@ -18,9 +18,9 @@ const profile: NextPageWithLayout = () => {
   if (isMobile) {
     return (
       <div>
-        <div className="md:max-w-[680px] md:mx-auto md:justify-center md:flex md:flex-col bg-gray-50">
-          <div className="pt-6 mx-auto pb-16 justify-center gap-8"></div>
-          <div className=" max-w-[450px] rounded-md w-full">
+        <div className="md:max-w-[680px] md:mx-auto md:justify-center  md:flex md:flex-col bg-gray-50">
+          <div className="sm:pt-0 mx-auto sm:pb-0 md:pt-6 md-pb-16 justify-center gap-8"></div>
+          <div className=" max-w-[450px] rounded-md w-full mx-auto">
             <ProfileAbout postCount={3} followCount={2} followerCount={10} />
             <div className=" mx-auto mt-4  grid gap-y-4">
               <Post
