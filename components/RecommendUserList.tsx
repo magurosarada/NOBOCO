@@ -4,7 +4,7 @@ import RecommendUser from "./RecommendUser";
 const RecommendUserList = () => {
   return (
     <div className="bg-white rounded-md w-full h-full">
-      <h3 className=" p-3">おすすめのユーザー</h3>
+      <h3 className="p-3">おすすめのユーザー</h3>
       <div className=" grid grid-flow-row gap-y-2">
         <RecommendUser
           name="小林 直樹"
