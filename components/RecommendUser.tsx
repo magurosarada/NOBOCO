@@ -11,9 +11,9 @@ const RecommendUser = ({ name, image }: { name: string; image: string }) => {
           </div>
           <p className="text-sm">{name}</p>
         </div>
-        <div className="">
+        <div className="flex justify-center">
           <div className="items-center">
-            <Button className="max-w-4 h-7   hover:bg-green-500 hover:text-white flex shadow-none">
+            <Button className="max-w-4 h-7  w-3 hover:bg-green-500 hover:text-white flex shadow-none">
               フォロー
             </Button>
           </div>
