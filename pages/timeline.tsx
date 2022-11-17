@@ -16,6 +16,9 @@ const timeline: NextPageWithLayout = () => {
   if (!firebaseUser) {
     return null;
   }
+  if (firebaseUser && !user) {
+    router.push("/timeline");
+  }
   if (isMobile) {
     return (
       <div className="bg-gray-50">
