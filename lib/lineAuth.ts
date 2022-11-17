@@ -120,7 +120,7 @@ export const openLineLoginPage = async (isDleteMode: boolean) => {
     response_type: "code",
     client_id: process.env.NEXT_PUBLIC_LINE_CLIENT_ID as string,
     redirect_uri:
-   `https://noboco-magurosarada.vercel.app/login`,
+   `https://noboco-magurosarada.vercel.app/timeline`,
     state,
     scope: "profile openid",
   }).toString();
