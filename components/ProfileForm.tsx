@@ -182,22 +182,26 @@ const ProfileForm = ({ isEditMode }: { isEditMode: boolean }) => {
           </div>
         </div>
       </form>
-      <div className="mt-8  flex flex-col">
-        <h3 className="text-2xl">退会</h3>
-        <p className="mt-4 ">退会すると投稿などの全てのデータが削除されます</p>
-        <div className="flex ">
-          <Button
-            className="  rounded-md p-2  bg-red-100  mt-4 hover:bg-red-500 hover:text-white hover:border-none"
-            onClick={() => setIsLeaveopen(true)}
-          >
-            退会する
-          </Button>
+      {isEditMode && (
+        <div className="mt-8  flex flex-col">
+          <h3 className="text-2xl">退会</h3>
+          <p className="mt-4 ">
+            退会すると投稿などの全てのデータが削除されます
+          </p>
+          <div className="flex ">
+            <Button
+              className="  rounded-md p-2  bg-red-100  mt-4 hover:bg-red-500 hover:text-white hover:border-none"
+              onClick={() => setIsLeaveopen(true)}
+            >
+              退会する
+            </Button>
+          </div>
+          <LeaveModal
+            isLeaveOpen={isLeaveOpen}
+            onClose={() => setIsLeaveopen(false)}
+          />
         </div>
-        <LeaveModal
-          isLeaveOpen={isLeaveOpen}
-          onClose={() => setIsLeaveopen(false)}
-        />
-      </div>
+      )}
     </div>
   );
 };

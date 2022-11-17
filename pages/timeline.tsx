@@ -17,7 +17,7 @@ const timeline: NextPageWithLayout = () => {
     return null;
   }
   if (firebaseUser && !user) {
-    router.push("/timeline");
+    router.push("/signup");
   }
   if (isMobile) {
     return (
