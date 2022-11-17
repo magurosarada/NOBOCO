@@ -46,7 +46,7 @@ const PostZone = () => {
       createdAt: Date.now(),
       updatedAt: null,
       authorId: firebaseUser.uid,
-      mainImageURL: data.mainImageURL,
+      mainImageURL: "",
       place: data.place,
     };
 
@@ -72,7 +72,6 @@ const PostZone = () => {
           </div>
 
           <form action="" onSubmit={handleSubmit(submit)}>
-            {watch("mainImageURL")}
             <div className="w-full">
               <input
                 className="w-full p-2 border mt-4 rounded-md"

@@ -1,13 +1,15 @@
 import { collection, doc, setDoc } from "@firebase/firestore";
+import { Router, useRouter } from "next/router";
 import { useAuth } from "../context/UserContext";
 import { db } from "../firebase/client";
 import { Comment, Post } from "../types/post";
 
 export const createPost = (data: Post) => {
   const ref = doc(collection(db, "posts"));
+  const router = useRouter()
   const {firebaseUser} = useAuth();
   if(!firebaseUser){
-    return null
+    router.push("/signup")
   }
   const post: Post = {
     id: ref.id,
@@ -15,7 +17,7 @@ export const createPost = (data: Post) => {
     body: data.body,
     createdAt: Date.now(),
     updatedAt: null,
-    authorId: firebaseUser.uid,
+    authorId: firebaseUser!.uid,
     mainImageURL: "",
     place: data.place
   };

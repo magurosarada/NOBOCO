@@ -7,11 +7,11 @@ import UserRanking from "../components/UserRanking";
 import { useRequireAuth } from "../lib/requireAuth";
 import { NextPageWithLayout } from "./_app";
 import PostList from "../components/PostList";
+import { useUser } from "../lib/user";
 
 const timeline: NextPageWithLayout = () => {
   const { firebaseUser, user } = useRequireAuth();
   const router = useRouter();
-
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   if (!firebaseUser) {
     return null;

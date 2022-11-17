@@ -23,10 +23,8 @@ const login: NextPageWithLayout = () => {
     };
     return signInWithPopup(auth, provider[providerName])
       .then(() => {
-        if (user && firebaseUser) {
+        if (firebaseUser && user) {
           router.push("timeline");
-        } else {
-          router.push("signup");
         }
       })
       .catch((e) => {
