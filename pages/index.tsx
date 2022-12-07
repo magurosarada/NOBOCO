@@ -122,14 +122,28 @@ const index: NextPageWithLayout = () => {
             </div>
           </div>
           <div className="my-12 flex justify-center text-center">
-            <div>
-              <h3>まずは無料で登録</h3>
-              <Link href="/login">
-                <Button>登録する</Button>
-              </Link>
-            </div>
-            <div>
-              <img src="" alt="" />
+            <div className="flex">
+              <div>
+                <h3 className="text-[4.16667vw] leading-[1.6] font-bold font-[YakuHanJP, 'Noto Sans JP', 'Poppins', sans-serif]">
+                  まずは無料で
+                  <br />
+                  登録
+                </h3>
+                <Link href="/login">
+                  <Button
+                    className="bg-green-600  border-2 border-green-600 w-full px-24 
+                                rounded-full shadow-sm text-base font-medium text-white hover:bg-green-50
+                                hover:text-green-500 focus:outline-none focus:ring-2 mx-0 mt-[3.88889vw]"
+                  >
+                    <a href="" className="w-full block">
+                      登録する
+                    </a>
+                  </Button>
+                </Link>
+              </div>
+              <div className="">
+                <img src="/bouldering2.jpg" alt="" className="w-[34.58333vw]" />
+              </div>
             </div>
           </div>
         </div>
