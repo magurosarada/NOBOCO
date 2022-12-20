@@ -40,8 +40,10 @@ const Button: FC<
       className={buttonClass}
       {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
     >
-      {Icon && <Icon />}
-      <span className="flex-1">{children}</span>
+      <span className="flex items-center mx-auto">
+        <div className="mr-2">{Icon && <Icon />}</div>
+        <div>{children}</div>
+      </span>
     </button>
   );
 };

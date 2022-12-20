@@ -8,8 +8,10 @@ import { auth } from "../firebase/client";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/UserContext";
+import { FaGoogle, FaTwitter } from "react-icons/fa";
 import { NextPageWithLayout } from "./_app";
 import { ReactElement } from "react";
+import Button from "../components/Button";
 
 const login: NextPageWithLayout = () => {
   const router = useRouter();
@@ -39,20 +41,22 @@ const login: NextPageWithLayout = () => {
           <img src="/logo.svg" alt="" className="mx-auto md:w-1/3" />
           <div className="mt-5 flex flex-col justify-center">
             <div className="flex justify-center">
-              <button
-                className="border-2 h-12 rounded-full w-full md:w-3/5 bg-white border-black border-solid hover:bg-gray-100"
+              <Button
+                Icon={FaGoogle}
+                className="h-12 rounded-full w-4/6 mx-auto text-white border border-black  bg-gray-200 px-1 py-1 flex hover:border-none items-center  hover:bg-[#dc4e40] hover:text-white"
                 onClick={() => loginWithProvider("google")}
               >
                 Googleアカウントでログイン
-              </button>
+              </Button>
             </div>
             <div className="flex justify-center">
-              <button
-                className="border-2 h-12 mt-5 rounded-full w-full md:w-3/5 mx-auto bg-white border-black border-solid hover:bg-[#1DA1F2]"
+              <Button
+                Icon={FaTwitter}
+                className="h-12 mt-5 rounded-full w-4/6 mx-auto px-1 py-1 flex border border-black text-white hover:border-none bg-blue-400 hover:bg-[#1DA1F2] hover:text-white"
                 onClick={() => loginWithProvider("twitter")}
               >
                 Twitterアカウントでログイン
-              </button>
+              </Button>
             </div>
             <AuthLine />
           </div>
