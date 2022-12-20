@@ -13,49 +13,38 @@ const index: NextPageWithLayout = () => {
       </div>
       <div className="container mx-auto">
         <div className="mt-20">
-          <div className="w-full">
-            <h2 className="py-4 text-2xl text-center">NOBOCOの特徴</h2>
-            <p className="mx-auto w-20 h-2 bg-green-300"></p>
-            <div className="my-10 grid grid-cols-1 md:grid-cols-3">
-              <div className="my-10 flex flex-col">
-                <div className="w-40 h-40 mx-auto  mb-9">
-                  <img
-                    src="/bouldering.svg"
-                    alt="ボルダリング"
-                    className="w-full -h-full p-6 rounded-full bg-gray-200"
-                  />
-                </div>
-                <h3 className="text-center text-xl font-bold">
-                  クライミング専門
-                  <br />
-                  のSNS
-                </h3>
-              </div>
-              <div className="my-10 flex flex-col">
-                <div className="w-40 h-40 mx-auto mb-9">
-                  <img
-                    src="/chat.svg"
-                    alt="コメント"
-                    className="w-full h-full p-6 rounded-full bg-gray-200"
-                  />
-                </div>
-                <h3 className="text-center text-xl font-bold">
-                  自由にコメント
-                </h3>
-              </div>
-              <div className="my-10 flex flex-col">
-                <div className="w-40 h-40  mx-auto mb-9">
-                  <img
-                    src="/nice.svg"
-                    alt="nice"
-                    className="w-full h-full p-6 rounded-full bg-gray-200"
-                  />
-                </div>
-                <h3 className="text-center text-xl font-bold">いいねで応援</h3>
-              </div>
+          <div className="w-full flex justify-center mx-auto">
+            <div className="max-w-sm mr-20">
+              <h2 className="py-4 text-[52px] text-center">
+                あなたの
+                <br />
+                クライミングを
+                <br />
+                みんなに
+                <br />
+                共有しよう！
+              </h2>
+              <p className="w-auto">
+                NOBOCOはクライマーのために作られたSNSです。
+                あなたのクライミングの成果を画像と一緒に共有しましょう。
+                フォローで他のユーザーと繋がり、投稿をタイムラインで確認していいねで仲間を応援しましょう！
+              </p>
+            </div>
+            <div className="">
+              <img
+                src="/topAbout.jpg"
+                alt=""
+                className="max-w-[500px] mx-auto"
+              />
+              <p className="text-center">
+                <a href="https://jp.freepik.com/free-vector/happy-young-couple-having-fun-girl-and-guy-dancing-at-party-celebrating-good-news-flat-illustration_11235596.htm#from_view=detail_author">
+                  著作者：pch.vector
+                </a>
+                ／出典：Freepik
+              </p>
             </div>
           </div>
-          <div className="my-20">
+          <div className="my-28">
             <h2 className="py-4 text-2xl text-center">NOBOCOの使い方</h2>
             <p className="mx-auto w-20 h-2 bg-green-300"></p>
             <div className="grid grid-cols-1 mx-16 mt-10 md:grid-cols-3 md:space-x-1 md:gap-10 ">
@@ -121,7 +110,7 @@ const index: NextPageWithLayout = () => {
               </div>
             </div>
           </div>
-          <div className="my-12 flex justify-center text-center">
+          <div className=" mb-12 flex justify-center text-center">
             <div className="flex">
               <div>
                 <h3 className="text-[4.16667vw] leading-[1.6] font-bold font-[YakuHanJP, 'Noto Sans JP', 'Poppins', sans-serif]">
@@ -131,11 +120,11 @@ const index: NextPageWithLayout = () => {
                 </h3>
                 <Link href="/login">
                   <Button
-                    className="bg-green-600  border-2 border-green-600 w-full px-24 
+                    className="bg-green-600  border-2 border-green-600   mx-auto
                                 rounded-full shadow-sm text-base font-medium text-white hover:bg-green-50
-                                hover:text-green-500 focus:outline-none focus:ring-2 mx-0 mt-[3.88889vw]"
+                                hover:text-green-500 focus:outline-none focus:ring-2 mt-[3.88889vw]"
                   >
-                    <a href="" className="w-full block">
+                    <a href="" className="w-full px-[58px] py-[10px]   block">
                       登録する
                     </a>
                   </Button>
