@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
+import LoginModal from "./LoginModal";
 
 const Layout = ({ children }: { children: ReactNode }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div>
       <header className="p-4 z-30 w-full fixed bg-green-100 top-0 md:space-x-2 h-16 border-[#F0F0F5] border-b">
@@ -15,11 +17,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </Link>
           </div>
           <div className="items-center">
-            <Link href="/login">
-              <button className=" p-2 border border-black items-center rounded-md shadow-sm text-sm font-medium hover:bg-green-300">
-                ログイン
-              </button>
-            </Link>
+            <button
+              className=" p-2 border border-black items-center rounded-md shadow-sm text-sm font-medium hover:bg-green-300"
+              onClick={() => setIsOpen(true)}
+            >
+              ログイン
+            </button>
+            <LoginModal onClose={() => setIsOpen(false)} Isopen={isOpen} />
           </div>
         </div>
       </header>
