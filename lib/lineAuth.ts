@@ -108,7 +108,7 @@ const useLineAuth = (isDeleteMode: boolean) => {
   }, [router.query.code]);
 };
 
-export const openLineLoginPage = async (isDleteMode: boolean) => {
+export const openLineLoginPage = async () => {
   const stateRef = doc(collection(db, "lineStates"));
   const state = stateRef.id;
 
