@@ -33,7 +33,7 @@ const LoginModal = ({
         if (user && firebaseUser) {
           router.push("timeline");
         } else {
-          router.push("index");
+          router.push("/");
         }
       })
       .catch((e) => {
@@ -70,15 +70,15 @@ const LoginModal = ({
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-semibold text-center  leading-6 text-gray-900"
                   >
-                    ログイン
+                    NOBOCOをはじめる
                   </Dialog.Title>
                   <div className="mt-5 flex flex-col justify-center">
                     <div className="flex justify-center">
                       <Button
                         Icon={FaGoogle}
-                        className="h-12 rounded-full w-4/6 mx-auto text-black border border-black  bg-white  px-1 py-1 flex hover:border-none items-center  hover:bg-[#dc4e40] hover:text-white"
+                        className="h-12 rounded-full w-4/6 mx-auto text-white hover:text-white hover:border hover:border-black  px-1 py-1 flex items-center  bg-[#dc4e40] "
                         onClick={() => loginWithProvider("google")}
                       >
                         Googleアカウントでログイン
@@ -87,7 +87,7 @@ const LoginModal = ({
                     <div className="flex justify-center">
                       <Button
                         Icon={FaTwitter}
-                        className="h-12 mt-5 rounded-full w-4/6 mx-auto px-1 py-1 flex border border-black text-white hover:border-none bg-blue-400 hover:bg-[#1DA1F2] hover:text-white"
+                        className="h-12 mt-5 rounded-full w-4/6 mx-auto px-1 py-1 flex hover:border hover:border-black text-white  bg-[#1DA1F2] hover:text-white"
                         onClick={() => loginWithProvider("twitter")}
                       >
                         Twitterアカウントでログイン

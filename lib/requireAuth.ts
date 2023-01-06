@@ -6,7 +6,7 @@ export const useRequireAuth = () => {
   const router = useRouter();
 
   if (auth.firebaseUser === null) {
-    router.push("/login");
+    router.push("/");
   }
 
   return auth;

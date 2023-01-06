@@ -119,9 +119,7 @@ export const openLineLoginPage = async (isDleteMode: boolean) => {
   url.search = new URLSearchParams({
     response_type: "code",
     client_id: process.env.NEXT_PUBLIC_LINE_CLIENT_ID as string,
-    redirect_uri: isDleteMode
-      ? `http://localhost:3000/settings`
-      : `http://localhost:3000/timeline`,
+    redirect_uri:  `http://localhost:3000/timeline`,
     state,
     scope: "profile openid",
   }).toString();

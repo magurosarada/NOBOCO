@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
+import LoginModal from "../components/LoginModal";
 import { NextPageWithLayout } from "./_app";
 
 const index: NextPageWithLayout = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div>
       <div className="mt-16 py-64 bg-[url('/top.jpg')] object-cover bg-cover w-full h-full text-center">
@@ -118,17 +120,18 @@ const index: NextPageWithLayout = () => {
                   <br />
                   登録
                 </h3>
-                <Link href="/login">
-                  <Button
-                    className="bg-green-600  border-2 border-green-600   mx-auto
-                                rounded-full shadow-sm text-base font-medium text-white hover:bg-green-50
-                                hover:text-green-500 focus:outline-none focus:ring-2 mt-[3.88889vw]"
-                  >
-                    <a href="" className="w-full px-[58px] py-[10px]   block">
-                      登録する
-                    </a>
-                  </Button>
-                </Link>
+                <Button
+                  className="  mx-auto bg-green-500
+                                rounded-full shadow-sm text-base font-medium text-white hover:text-white hover:border-black
+                                 focus:outline-none focus:ring-2 mt-[3.88889vw]"
+                  type="button"
+                  onClick={() => setIsOpen(true)}
+                >
+                  <div className="w-full px-[70px] py-[10px]   block">
+                    登録する
+                  </div>
+                </Button>
+                <LoginModal Isopen={isOpen} onClose={() => setIsOpen(false)} />
               </div>
               <div className="">
                 <img src="/bouldering2.jpg" alt="" className="w-[34.58333vw]" />

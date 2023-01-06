@@ -16,7 +16,7 @@ const LogoutModal = ({
     auth
       .signOut()
       .then(() => {
-        router.push("login");
+        router.push("/");
       })
       .catch(() => {
         alert("ログアウト失敗");
