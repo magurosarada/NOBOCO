@@ -8,6 +8,7 @@ import format from "date-fns/format";
 import Addcomment from "../../components/Addcomment";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { adminDB } from "../../firebase/server";
+import Like from "../../components/Likes";
 
 export const getStaticProps: GetStaticProps<{
   post: Post;
@@ -63,6 +64,7 @@ const postDetail: NextPageWithLayout<
         </div>
       )}
       <Addcomment />
+      <Like userId={user?.handleName} postId={post.id}></Like>
     </div>
   );
 };

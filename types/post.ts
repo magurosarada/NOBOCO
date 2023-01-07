@@ -1,3 +1,5 @@
+import { LargeNumberLike } from "crypto";
+
 export type Post = {
   body:string;
   title:string;
@@ -5,6 +7,7 @@ export type Post = {
   mainImageURL:string;
   createdAt:number;
   updatedAt:number |null;
+  likeCount:number;
   id:string;
   place:string
 }
