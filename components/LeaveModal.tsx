@@ -89,7 +89,7 @@ const LeaveModal = ({
           // ...
         });
     } else {
-      openLineLoginPage(true);
+      openLineLoginPage();
     }
   };
   return (
