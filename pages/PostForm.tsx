@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import MainLayout from "../components/MainLayout";
 
 type Props = {
   userId: string;

@@ -1,9 +1,6 @@
-import Link from "next/link";
 import React, { FC, ReactNode } from "react";
-import DropDown from "../components/DropDown";
 import Footer from "./Footer";
 import Header from "./Header";
-import SearchBar from "./SearchBar";
 
 type Props = {
   children: ReactNode;

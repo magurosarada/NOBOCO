@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 import { useAuth } from "../context/UserContext";
 import { FaGoogle, FaTwitter } from "react-icons/fa";
 import { NextPageWithLayout } from "./_app";
-import { FaGoogle, FaTwitter } from "react-icons/fa";
 import { ReactElement } from "react";
 import Button from "../components/Button";
 

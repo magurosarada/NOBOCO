@@ -4,8 +4,6 @@ import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { Fragment, useState } from "react";
 import { useAuth } from "../context/UserContext";
-import LeaveModal from "./LeaveModal";
-import LogoutModal from "./LogoutModal";
 import PostModal from "./PostModal";
 
 let DropDown = () => {
