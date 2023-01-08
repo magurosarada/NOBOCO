@@ -19,7 +19,8 @@ export const createPost = (data: Post) => {
     updatedAt: null,
     authorId: firebaseUser!.uid,
     mainImageURL: "",
-    place: data.place
+    place: data.place,
+    likeCount:2,
   };
 
   return setDoc(ref, post).then(() => {

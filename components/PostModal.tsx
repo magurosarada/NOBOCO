@@ -55,6 +55,7 @@ const PostModal = ({
       updatedAt: null,
       authorId: firebaseUser.uid,
       mainImageURL: "",
+      likeCount: 2,
     };
 
     setDoc(ref, post).then(() => {
