@@ -48,6 +48,7 @@ const PostZone = () => {
       authorId: firebaseUser.uid,
       mainImageURL: "",
       place: data.place,
+      likeCount: 2,
     };
 
     setDoc(ref, post).then(() => {
