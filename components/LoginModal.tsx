@@ -78,7 +78,7 @@ const LoginModal = ({
                     <div className="flex justify-center">
                       <Button
                         Icon={FaGoogle}
-                        className="h-12 rounded-full w-4/6 mx-auto text-white hover:text-white hover:border hover:border-black  px-1 py-1 flex items-center  bg-[#dc4e40] "
+                        className="h-12 rounded-full w-4/6 mx-auto p-2 text-white hover:text-white hover:border hover:border-black  px-1 py-1 flex items-center  bg-[#dc4e40] "
                         onClick={() => loginWithProvider("google")}
                       >
                         Googleアカウントでログイン
@@ -87,7 +87,7 @@ const LoginModal = ({
                     <div className="flex justify-center">
                       <Button
                         Icon={FaTwitter}
-                        className="h-12 mt-5 rounded-full w-4/6 mx-auto px-1 py-1 flex hover:border hover:border-black text-white  bg-[#1DA1F2] hover:text-white"
+                        className="h-12 mt-5 rounded-full w-4/6 mx-auto p-2 flex hover:border hover:border-black text-white  bg-[#1DA1F2] hover:text-white"
                         onClick={() => loginWithProvider("twitter")}
                       >
                         Twitterアカウントでログイン

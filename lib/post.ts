@@ -1,10 +1,10 @@
 import { collection, doc, setDoc } from "@firebase/firestore";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useAuth } from "../context/UserContext";
 import { db } from "../firebase/client";
 import { Comment, Post } from "../types/post";
 
-export const createPost = (data: Post) => {
+export  const createPost = (data: Post) => {
   const ref = doc(collection(db, "posts"));
   const router = useRouter()
   const {firebaseUser} = useAuth();
@@ -19,8 +19,8 @@ export const createPost = (data: Post) => {
     updatedAt: null,
     authorId: firebaseUser!.uid,
     mainImageURL: "",
+    likeCount:data.likeCount,
     place: data.place,
-    likeCount:2,
   };
 
   return setDoc(ref, post).then(() => {

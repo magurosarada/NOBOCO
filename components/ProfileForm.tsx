@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/UserContext";
 import { db, storage } from "../firebase/client";
+import userDetail from "../pages/users/[id]";
 import { User } from "../types/user";
 import Button from "./Button";
 import ImageEditor from "./ImageEditor";
@@ -41,6 +42,8 @@ const ProfileForm = ({ isEditMode }: { isEditMode: boolean }) => {
     const user: User = {
       id: firebaseUser.uid,
       name: data.name,
+      followerCount: data.followerCount,
+      followCount: data.followCount,
       handleName: data.handleName,
       email: data.email,
       introduction: data.introduction,
@@ -80,7 +83,7 @@ const ProfileForm = ({ isEditMode }: { isEditMode: boolean }) => {
         <div className="flex justify-center">
           <div className="mr-6">
             <label htmlFor="">
-              <ImageEditor name="userImage" control={control} />
+              <ImageEditor name="userImage" control={control} isPost={false} />
               <p className="text-center text-[#93a5b1] mt-2">変更する</p>
             </label>
           </div>

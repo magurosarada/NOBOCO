@@ -1,13 +1,13 @@
-import { ChangeEvent, Fragment, useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import ImageEditor from "./ImageEditor";
-import { useForm } from "react-hook-form";
-import classNames from "classnames";
-import { useAuth } from "../context/UserContext";
-import { Post } from "../types/post";
 import { collection, doc, setDoc } from "@firebase/firestore";
+import classNames from "classnames";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../context/UserContext";
 import { db } from "../firebase/client";
+import { Post } from "../types/post";
 import Button from "./Button";
+import ImageEditor from "./ImageEditor";
 
 const PostZone = () => {
   const [isImageOpen, setIsImageOpen] = useState<boolean>(true);
@@ -47,10 +47,9 @@ const PostZone = () => {
       updatedAt: null,
       authorId: firebaseUser.uid,
       mainImageURL: "",
-      place: data.place,
-      likeCount: 2,
+      place: "aa",
+      likeCount: 0,
     };
-
     setDoc(ref, post).then(() => {
       alert("投稿完了");
     });
@@ -76,10 +75,11 @@ const PostZone = () => {
             <div className="w-full">
               <input
                 className="w-full p-2 border mt-4 rounded-md"
+                autoComplete="off"
                 type="text"
-                id="place"
+                id="title"
                 placeholder="タイトルを入力"
-                {...register("place", {
+                {...register("title", {
                   required: "必須入力です",
                   maxLength: {
                     value: 50,
@@ -92,6 +92,7 @@ const PostZone = () => {
                 id="body"
                 placeholder="本文を入力"
                 className="w-full max-h-40 mt-2 border rounded-md p-2"
+                autoComplete="off"
                 {...register("body", {
                   required: "必須入力です",
                   maxLength: {
@@ -114,10 +115,17 @@ const PostZone = () => {
                     id="imageURL"
                     {...register("mainImageURL", {})}
                   />
-                  <ImageEditor name="mainImageURL" control={control} />
+                  <ImageEditor
+                    name="mainImageURL"
+                    control={control}
+                    isPost={true}
+                  />
                 </label>
               </div>
-              <Button className="hover:bg-green-500 hover:text-white">
+              <Button
+                className="hover:bg-green-500 hover:text-white"
+                type="submit"
+              >
                 投稿する
               </Button>
             </div>

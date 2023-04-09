@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { ReactElement, useState } from "react";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
@@ -15,29 +14,25 @@ const index: NextPageWithLayout = () => {
       </div>
       <div className="container mx-auto">
         <div className="mt-20">
-          <div className="w-full flex justify-center mx-auto">
-            <div className="max-w-sm mr-20">
-              <h2 className="py-4 text-[52px] text-center">
+          <div className="w-full flex justify-center flex-col md:flex-row mx-auto">
+            <div className="md:max-w-sm flex justify-center flex-col md:mr-20">
+              <h2 className="py-4 text-[52px] text-center w-full">
                 あなたの
-                <br />
+                <br className="" />
                 クライミングを
                 <br />
                 みんなに
                 <br />
                 共有しよう！
               </h2>
-              <p className="w-auto">
+              <p className="md:w-auto px-2 md:px-0 text-center mx-auto">
                 NOBOCOはクライマーのために作られたSNSです。
                 あなたのクライミングの成果を画像と一緒に共有しましょう。
                 フォローで他のユーザーと繋がり、投稿をタイムラインで確認していいねで仲間を応援しましょう！
               </p>
             </div>
-            <div className="">
-              <img
-                src="/topAbout.jpg"
-                alt=""
-                className="max-w-[500px] mx-auto"
-              />
+            <div className="max-w-[500px]">
+              <img src="/topAbout.jpg" alt="" className="w-full mx-auto" />
               <p className="text-center">
                 <a href="https://jp.freepik.com/free-vector/happy-young-couple-having-fun-girl-and-guy-dancing-at-party-celebrating-good-news-flat-illustration_11235596.htm#from_view=detail_author">
                   著作者：pch.vector

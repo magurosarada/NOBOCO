@@ -1,3 +1,4 @@
+import { userInfo } from "os";
 import React, { ReactElement } from "react";
 import { useMediaQuery } from "react-responsive";
 import MainLayout from "../components/MainLayout";
@@ -9,7 +10,7 @@ import { useRequireAuth } from "../lib/requireAuth";
 import { NextPageWithLayout } from "./_app";
 
 const profile: NextPageWithLayout = () => {
-  const { firebaseUser } = useRequireAuth();
+  const { firebaseUser, user } = useRequireAuth();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   if (!firebaseUser) {
     return null;
@@ -21,7 +22,7 @@ const profile: NextPageWithLayout = () => {
         <div className="md:max-w-[680px] md:mx-auto md:justify-center  md:flex md:flex-col bg-gray-50">
           <div className="sm:pt-0 mx-auto sm:pb-0 md:pt-6 md-pb-16 justify-center gap-8"></div>
           <div className=" max-w-[450px] rounded-md w-full mx-auto">
-            <ProfileAbout postCount={3} followCount={2} followerCount={10} />
+            <ProfileAbout postCount={3} followCount={2} />
             <div className=" mx-auto mt-4  grid gap-y-4">
               <Post
                 id="xxx"
@@ -79,7 +80,7 @@ const profile: NextPageWithLayout = () => {
           <UserRanking />
         </div>
         <div className=" max-w-[450px] rounded-md w-full">
-          <ProfileAbout postCount={3} followCount={2} followerCount={10} />
+          <ProfileAbout postCount={3} followCount={2} />
           <div className=" mx-auto mt-4  grid gap-y-4">
             <Post
               id="xxx"

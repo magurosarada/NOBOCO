@@ -1,37 +1,12 @@
-import AuthLine from "../components/LineLoginButton";
-import {
-  GoogleAuthProvider,
-  TwitterAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-import { auth } from "../firebase/client";
-import Layout from "../components/Layout";
-import { useRouter } from "next/router";
-import { useAuth } from "../context/UserContext";
-import { FaGoogle, FaTwitter } from "react-icons/fa";
-import { NextPageWithLayout } from "./_app";
 import { ReactElement } from "react";
+import { FaGoogle, FaTwitter } from "react-icons/fa";
 import Button from "../components/Button";
+import Layout from "../components/Layout";
+import AuthLine from "../components/LineLoginButton";
+import { loginWithProvider } from "../lib/requireAuth";
+import { NextPageWithLayout } from "./_app";
 
 const login: NextPageWithLayout = () => {
-  const router = useRouter();
-  const { user, firebaseUser } = useAuth();
-  const loginWithProvider = (providerName: "google" | "twitter") => {
-    const provider = {
-      google: new GoogleAuthProvider(),
-      twitter: new TwitterAuthProvider(),
-    };
-    return signInWithPopup(auth, provider[providerName])
-      .then(() => {
-        if (firebaseUser && user) {
-          router.push("timeline");
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
   return (
     <div className="mt-16 bg-[url('/signup.jpg')] bg-cover object-fill py-32">
       <div className="mx-auto">
