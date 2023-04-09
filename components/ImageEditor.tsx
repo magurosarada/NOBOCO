@@ -12,7 +12,8 @@ import {
 const ImageEditor = <T extends FieldValues>({
   control,
   name,
-}: UseControllerProps<T>) => {
+  isPost,
+}: UseControllerProps<T> & { isPost: boolean }) => {
   const [isImageOpen, setIsImageOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<File | null>();
   const [scale, setScale] = useState(1);
@@ -68,10 +69,14 @@ const ImageEditor = <T extends FieldValues>({
             />
             {field.value ? (
               <div className="w-30 h-30">
-                <img
-                  src={field.value as string}
-                  className="w-full h-full rounded-full"
-                />
+                {isPost ? (
+                  <img src={field.value as string} className="w-full h-full" />
+                ) : (
+                  <img
+                    src={field.value as string}
+                    className="w-full h-full rounded-full"
+                  />
+                )}
               </div>
             ) : (
               <div className="">
@@ -128,17 +133,30 @@ const ImageEditor = <T extends FieldValues>({
                   >
                     画像編集
                   </Dialog.Title>
-                  <AvatarEditor
-                    ref={editorRef}
-                    image={selectedImage!}
-                    width={300}
-                    height={300}
-                    border={50}
-                    borderRadius={150}
-                    color={[255, 255, 255, 0.6]} // RGBA
-                    scale={scale}
-                    rotate={0}
-                  />
+                  {isPost ? (
+                    <AvatarEditor
+                      ref={editorRef}
+                      image={selectedImage!}
+                      width={300}
+                      height={300}
+                      border={50}
+                      color={[255, 255, 255, 0.6]} // RGBA
+                      scale={scale}
+                      rotate={0}
+                    />
+                  ) : (
+                    <AvatarEditor
+                      ref={editorRef}
+                      image={selectedImage!}
+                      width={300}
+                      height={300}
+                      border={50}
+                      borderRadius={150}
+                      color={[255, 255, 255, 0.6]} // RGBA
+                      scale={scale}
+                      rotate={0}
+                    />
+                  )}
                   <input
                     name="scale"
                     type="range"

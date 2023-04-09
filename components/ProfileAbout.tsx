@@ -5,11 +5,10 @@ import Button from "./Button";
 
 type Props = {
   postCount: number;
-  followCount: number;
-  followerCount: number;
+  followCount: number | undefined;
 };
 
-let ProfileAbout: FC<Props> = ({ postCount, followCount, followerCount }) => {
+let ProfileAbout: FC<Props> = ({ postCount, followCount }) => {
   const { user } = useAuth();
   if (!user) {
     return null;
@@ -51,7 +50,7 @@ let ProfileAbout: FC<Props> = ({ postCount, followCount, followerCount }) => {
               </Link>
               <Link href="">
                 <a className="ml-4">
-                  <span>{followerCount}</span>フォロワー
+                  <span>{user.followerCount}</span>フォロワー
                 </a>
               </Link>
               <Link href="">

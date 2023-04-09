@@ -1,10 +1,7 @@
-import { signInWithCustomToken } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuth } from "../context/UserContext";
 import { FaLine } from "react-icons/fa";
-import { auth, db } from "../firebase/client";
 import useLineAuth, { openLineLoginPage } from "../lib/lineAuth";
 import Button from "./Button";
 

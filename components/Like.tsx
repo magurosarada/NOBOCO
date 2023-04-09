@@ -10,12 +10,8 @@ type Props = {
   postId: string;
 };
 
-const Like = ({
-  userId = "MOCK_USER_ID",
-  postId = "5BlpSpkJhCcVnsi9NuW4",
-}: Props) => {
+const Like = ({ userId, postId }: Props) => {
   const postRef = doc(db, `posts/${postId}`);
-
   const postSWR = useSWR<Post>(`posts/${postId}`, async () => {
     const snap = await getDoc(postRef);
     return snap.data() as Post;
@@ -33,9 +29,10 @@ const Like = ({
 
   const isLike = isLikeSWR.data;
   const oldData = postSWR.data;
-
+  //ここから動作しない  isLikeSWR.dataがundefind
   const toggleLike = useDebouncedCallback(async () => {
     if (isLike === undefined || !oldData) {
+      console.log(userId, isLikeSWR);
       return null;
     }
 

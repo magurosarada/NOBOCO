@@ -4,11 +4,11 @@ export type Post = {
   body:string;
   title:string;
   authorId:string;
-  mainImageURL:string;
+  mainImageURL:string | null;
   createdAt:number;
   updatedAt:number |null;
-  likeCount:number;
   id:string;
+  likeCount: number;
   place:string
 }
 

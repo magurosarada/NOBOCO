@@ -140,7 +140,7 @@ const PostModal = ({
                           </label>
                         </div>
                         {selectedImage && (
-                          <ImageEditor name="mainImageURL" control={control} />
+                          <ImageEditor name="mainImageURL" control={control} isPost={false} />
                         )}
                         <div className=" w-full border-t ">
                           <input

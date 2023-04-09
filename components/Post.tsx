@@ -5,6 +5,7 @@ import { ja } from "date-fns/locale";
 import { useAuth } from "../context/UserContext";
 import Addcomment from "./Addcomment";
 import Button from "./Button";
+import Follow from "./Follow";
 
 type Props = {
   id: string;
@@ -27,6 +28,7 @@ let Post: FC<Props> = ({
   title,
   commentCount,
   place,
+  userId,
 }) => {
   const { user } = useAuth();
   if (!user) {

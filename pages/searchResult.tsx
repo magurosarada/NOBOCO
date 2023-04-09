@@ -1,30 +1,29 @@
 import algoliasearch from "algoliasearch/lite";
 import { formatDistanceToNow } from "date-fns";
 import { ja } from "date-fns/locale";
-import React, { ReactElement, ReactNode } from "react";
+import { debounce } from "debounce";
+import Link from "next/link";
+import { ReactElement, ReactNode } from "react";
 import {
-  InstantSearch,
+  Configure,
   Hits,
   HitsProps,
-  useInstantSearch,
+  InstantSearch,
   Pagination,
-  Configure,
   SearchBox,
   SearchBoxProps,
+  useInstantSearch,
 } from "react-instantsearch-hooks-web";
 import MainLayout from "../components/MainLayout";
+import { useUser } from "../lib/user";
 import { Post } from "../types/post";
 import { NextPageWithLayout } from "./_app";
-import { useUser } from "../lib/user";
-import Link from "next/link";
-import { debounce } from "debounce";
 
 const searchClient = algoliasearch(
   "XIIP7PXG27",
   "7e70fe71b31e496e35e25a5364e7fdad"
 );
 const search: SearchBoxProps["queryHook"] = (query, hook) => {
-  console.log("検索");
   hook(query);
 };
 const NoresultBoundry = ({ children }: { children: ReactNode }) => {
@@ -99,7 +98,7 @@ const searchResult: NextPageWithLayout = () => {
               queryHook={debounce(search, 1000)}
             />
           </div>
-          <Configure hitsPerPage={3} />
+          <Configure hitsPerPage={5} />
           <NoresultBoundry>
             <Hits<Post> hitComponent={Hit} />
             <Pagination
